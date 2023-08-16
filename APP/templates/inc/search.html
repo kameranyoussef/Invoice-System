@@ -1,0 +1,71 @@
+{% load static %}
+{% block content %}
+    <h1>Serach Resualts For {{ searchKey|title }}: </h1>
+    <br/>
+    <h2>Companies</h2>
+    <table>
+        <thead>
+            <td>EDIT</td>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>CONTACT</td>
+            <td>ADDRESS</td>
+
+        </thead>
+        {% for obj in CompanyObj  %}
+            <tr>
+                <td>
+                    <a hx-get="{% url 'update_company' pk=obj.id %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/edit-16-white.png' %}"/>
+                    <img src="{% static 'imgs/edit-16-black.png' %}"/>
+                    </a>
+                </td>
+                <td>100-{{ obj.id }}</td>
+                <td>{{ obj.name }}</td>
+                <td>
+                    {{ obj.contact }}<br>
+                    +{{ obj.tel }}<br>
+                    {{ obj.email }}<br>
+                </td>
+                <td>
+                    {{ obj.address }}<br>
+                    {{ obj.plz }}, {{ obj.ort }}<br>
+                    {{ obj.land }}<br>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h2>Customers</h2>
+    <table>
+        <thead>
+            <td>EDIT</td>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>CONTACT</td>
+            <td>ADDRESS</td>
+
+        </thead>
+        {% for obj in CustomerObj  %}
+            <tr>
+                <td>
+                    <a hx-get="{% url 'update_customer' pk=obj.id %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/edit-16-white.png' %}"/>
+                    <img src="{% static 'imgs/edit-16-black.png' %}"/>
+                    </a>
+                </td>
+                <td>100-{{ obj.id }}</td>
+                <td>{{ obj.name }}</td>
+                <td>
+                    +{{ obj.tel }}<br>
+                    {{ obj.email }}<br>
+                </td>
+                <td>
+                    {{ obj.address }}<br>
+                    {{ obj.plz }}, {{ obj.ort }}<br>
+                    {{ obj.land }}<br>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

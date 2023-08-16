@@ -1,0 +1,67 @@
+{% load static %}
+<section class="layout NavBar">
+        <div class="layout-box">
+            <div class="left">
+                <a href="{% url 'home' %}">ONE>/p</a>
+            </div>
+        </div>
+        <div class="layout-box">
+            {% if user.is_authenticated %}
+                <div class="center">
+                    <input  class="center border-radius" 
+                            type="search" 
+                            name="search" 
+                            placeholder="Begin Typing To Search..." 
+                            hx-get="{% url 'search' %}" 
+                            hx-trigger="keyup changed delay:500ms, search" 
+                            hx-target="#response-div" 
+                            hx-indicator=".htmx-indicator">
+                    <span class="htmx-indicator"> 
+                        Loading... 
+                    </span> 
+                </div>
+            {% endif %}
+        </div>
+        <div class="layout-box">  
+            <div class="right">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">LOGOUT</a>
+                {% else %}
+                    <a href="{% url 'login' %}">LOGIN</a> 
+                {% endif %}
+            </div>
+        </div>
+</section>
+<br>
+{% if user.is_authenticated %}
+    <section class="layout authNav">
+        <div class="layout-box">
+            <div class="left">
+                <a  hx-get="{% url 'list_invoice' %}" hx-target="#response-div">INVOICES</a>
+                <a hx-get="{% url 'create_invoice' %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/plus-16-white.png' %}"/>
+                    <img src="{% static 'imgs/plus-16-black.png' %}"/>
+                </a>
+            </div>
+        </div>
+        <div class="layout-box">
+            <div class="center">
+                <a hx-get="{% url 'list_customer' %}" hx-target="#response-div">CUSTOMER</a> 
+                <a hx-get="{% url 'create_customer' %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/plus-16-white.png' %}"/>
+                    <img src="{% static 'imgs/plus-16-black.png' %}"/>
+                </a>
+            </div>
+        </div>
+        <div class="layout-box">
+            <div class="right">
+                <a hx-get="{% url 'list_company' %}" hx-target="#response-div">COMPANY</a>
+                <a hx-get="{% url 'create_company' %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/plus-16-white.png' %}"/>
+                    <img src="{% static 'imgs/plus-16-black.png' %}"/>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endif %}
+<br>

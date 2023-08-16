@@ -1,0 +1,158 @@
+{% block content %}
+<div id="InvPrint">
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp">
+            <div class="Company">
+                <h1>{{ objInvoice.company.name|upper }}</h1>
+                <table>
+                    <tr><td><p>{{ objInvoice.company.address }}</p></td></tr>
+                    <tr><td><p>{{ objInvoice.company.plz }}, {{ objInvoice.company.ort|title }}</p></td></tr>
+                    <tr><td><p>{{ objInvoice.company.land|title }}</p></td></tr>
+                </table> 
+            </div>
+        </div>
+
+        <div class="layout-box layout-boxp">
+        </div>
+
+        <div class="layout-box layout-boxp">    
+            <div class="Title">
+                <h1>Rechnung</h1>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp">
+            <div class="Customer">
+                <h5>Empfänger:</h5>
+                <table>
+                    <tr><td><p>{{ objInvoice.customer.name|title }}</p></td></tr>
+                    <tr><td><p>{{ objInvoice.customer.address }}</p></td></tr>
+                    <tr><td><p>{{ objInvoice.customer.plz }}, {{ objInvoice.customer.ort|title }}</p></td></tr>
+                    <tr><td><p>{{ objInvoice.customer.land|title }}</p></td></tr>
+                    <tr><td><p>Mob: +{{ objInvoice.customer.tel }} </p></td></tr>
+                    <tr><td><p>Email: {{ objInvoice.customer.email }}</p></td></tr>
+                </table> 
+            </div>
+        </div>
+
+        <div class="layout-box layout-boxp">
+        </div>
+
+        <div class="layout-box layout-boxp">
+            <div class="Invoices">
+                <table>
+                    <tr><td><p>Angebotsdatum     </p></td><td><p>:</p></td><td><p>{{objInvoice.created_at|date:"Y-m-d"}}</p></td></tr>
+                    <tr><td><p>Re.-Nr.           </p></td><td><p>:</p></td><td><p>100-{{objInvoice.id}}</p></td></tr>
+                    <tr><td><p>Kundennummer      </p></td><td><p>:</p></td><td><p>100-{{objInvoice.customer.id}}</p></td></tr>
+                    <tr><td><p>Zahlbar bis       </p></td><td><p>:</p></td><td><p>{{objInvoice.created_at|date:"Y-m-d"}}</p></td></tr>
+                    <tr><td><p>Ausgestellt von   </p></td><td><p>:</p></td><td><p>{{objInvoice.company.contact}}</p></td></tr>
+                </table> 
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp">
+            <div class="info">    
+                <h5>Zusätzliche Informationen und Bedingungen</h5>
+                <p>
+                    Vielen Dank für Ihr Interesse an unseren Produkte.  <br> 
+                    Hiermit unterbreiten wir Ihnen folgende Rechnung:   <br> 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp">
+            <div class="Product-Table">
+                <table>
+                    <thead>
+                        <td>Bezeichnung</td>
+                        <td>Anzahl</td>
+                        <td>Einheit</td>
+                        <td>Preis/Einheit</td>
+                        <td>Ust%</td>
+                        <td>£Ust</td>
+                        <td>£Gesamt</td>
+                    </thead>
+                    {% for pro  in ObjProducts.all %}
+                        <tr> 
+                            <td>{{ pro.product }}</td>
+                            <td>{{ pro.count }}</td>
+                            <td>{{ pro.unit|title }}</td>
+                            <td>£{{ pro.price }}</td>
+                            <td>{{ pro.vat }}%</td>
+                            <td>£{{ pro.cal_Ust}}</td>
+                            <td>£{{ pro.cal_Ges}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp"></div>
+        <div class="layout-box layout-boxp"></div>
+        <div class="layout-box layout-boxp">
+            <div class="Product-Sum">
+                <table>
+                    <tr>
+                        <td  style="padding-right: 20px;">Bruttobetrag</td>
+                        <td>:</td>
+                        <td>£{{ GesSum|floatformat:2}}</td>
+                    </tr>
+                    <tr>
+                        <td  style="padding-right: 20px;">MwSt. VAT%</td>
+                        <td>:</td>
+                        <td>£{{ UstSum|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <td  style="padding-right: 20px;">Endbetrag</td>
+                        <td>:</td>
+                        <td>£{{ EndSum|floatformat:2 }}</td>
+                    </tr>
+                </table>  
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <div style="width: 100%;border-bottom: 1px solid black;"></div>
+    <br>
+
+    <section class="layout layoutp">
+        <div class="layout-box layout-boxp">
+            <div class="footer-Company-Left">
+                <h5>{{ objInvoice.company.name|title }}</h5>
+                <p>   
+                    {{ objInvoice.company.address }}<br>
+                    {{ objInvoice.company.plz }}, {{ objInvoice.company.ort }}<br>
+                    {{ objInvoice.company.land }}<br>
+                </p>
+            </div>
+        </div>
+        <div class="layout-box layout-boxp">
+            <div class="footer-Company-Right">
+                <h5>Kontaktinformation</h5>
+                <p> 
+                    {{ objInvoice.company.name|title }}<br>
+                    Mob:+{{ objInvoice.company.tel }}<br> 
+                    Email:{{ objInvoice.company.email }} <br>
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

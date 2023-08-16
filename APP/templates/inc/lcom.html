@@ -1,0 +1,37 @@
+{% load static %}
+{% block content %}
+    <table>
+        <thead>
+            <td>EDIT</td>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>CONTACT</td>
+            <td>ADDRESS</td>
+
+        </thead>
+        {% for obj in object_list  %}
+            <tr>
+                <td>
+                    <a hx-get="{% url 'update_company' pk=obj.id %}" hx-target="#response-div">
+                    <img src="{% static 'imgs/edit-16-white.png' %}"/>
+                    <img src="{% static 'imgs/edit-16-black.png' %}"/>
+                    </a>
+                </td>
+                <td>100-{{ obj.id }}</td>
+                <td>{{ obj.name }}</td>
+                <td>
+                    {{ obj.contact }}<br>
+                    +{{ obj.tel }}<br>
+                    {{ obj.email }}<br>
+                </td>
+                <td>
+                    {{ obj.address }}<br>
+                    {{ obj.plz }}, {{ obj.ort }}<br>
+                    {{ obj.land }}<br>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
+ 
+ 

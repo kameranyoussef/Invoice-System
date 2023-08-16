@@ -1,0 +1,271 @@
+@media screen {
+    /* Page Setup */
+    * {
+        font-family: 'Open Sans', sans-serif;
+        transition: all 1s ease-out;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    html {
+        font: inherit;
+        width: 100%;
+        background:
+            -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%),
+            -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%),
+            -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    }
+
+    body {
+        margin: 12.5%;
+        background: #000;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    a:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    a img:last-child {
+        display: none;
+    }
+
+    a:hover img:last-child {
+        display: inherit;
+    }
+
+    a:hover img:first-child {
+        display: none;
+    }
+
+    .left {
+        text-align: left;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .border-radius {
+        border-radius: 5px;
+    }
+
+    .hero {
+        line-height: 400px;
+        height: 400px;
+    }
+
+    #Add_formset,
+    input[type=submit],
+    input[type=number],
+    input[type=search],
+    input[type=email],
+    input[type=password],
+    input[type=text] {
+        background: #222;
+        border: 1px solid;
+        border-radius: 5px;
+        width: 100%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+
+    input::placeholder {
+        color: #fff;
+    }
+
+    input.submit{
+        width: 44%;
+        margin: 10px;
+    }
+
+    #id_username input[type=text]{
+        width: auto;
+    }
+
+    #id_company,
+    #id_customer{
+        background: black;
+        /* width: 100%; */
+        border: white 1px solid;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 5px;
+    }   
+    
+    /* flex-layout */
+    .layout {
+        display: flex;
+    }
+
+    .layout-box {
+        flex-grow: 1;
+    }
+
+    /* NavBar */
+    .NavBar {
+        font-size: xx-large;
+        padding: 5px 0 5px 0;
+        text-transform: lowercase;
+    }
+
+    .NavBar a:hover {
+        text-transform: uppercase;
+    }
+
+    .hidden-formset {
+        visibility: hidden;
+        display: flex;
+    }
+
+    table{
+        width: 100%;
+        padding: 10px;
+    }
+
+    table > thead > tr > td{
+        text-align: center;
+        padding: 10px;
+        font-weight: 900;
+        border: white 1px solid;
+        border-radius: 5px;
+    }
+
+    table > tbody > tr > td > a{
+        padding: 0;
+    }
+
+    table > tbody > tr > td{
+        border-top: black 5px solid;
+        border-bottom: black 5px solid;
+    }
+    
+    #InvPrint {
+        background: white;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    #InvPrint h1,
+    #InvPrint h5,
+    #InvPrint p,
+    #InvPrint td{
+        color: black;
+    }
+
+    #InvPrint table > thead > tr > td {
+       text-align: initial;
+       padding: 0;
+       background: lightskyblue;
+    }
+
+    #InvPrint table > tbody > tr > td {
+        border-top: white 5px solid;
+        border-bottom: white 5px solid;
+    }
+
+    #InvPrint > section:nth-child(1) > div:nth-child(3) > div > h1{
+        color: lightskyblue;
+        font-size: xxx-large;
+    }
+
+}
+
+@media print {
+    .NavBar {
+        display: none;
+    }
+
+    .authNav{
+        display: none;
+    }
+ 
+    /* Page Setup */
+    * {
+        font-family: 'Open Sans', sans-serif;
+        transition: all 1s ease-out;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }    
+    /* flex-layout */
+    .layoutp {
+        display: flex;
+    }
+
+    .layout-boxp {
+        flex-grow: 1;
+    }
+
+    /* table */
+    table{
+        width: 100%;
+        padding: 10px;
+    }
+
+    table > thead > tr > td{
+        text-align: center;
+        padding: 10px;
+        font-weight: 900;
+        border: white 1px solid;
+        border-radius: 5px;
+    }
+
+    table > tbody > tr > td > a{
+        padding: 0;
+    }
+
+    table > tbody > tr > td{
+        border-top: black 5px solid;
+        border-bottom: black 5px solid;
+    }
+    
+    #InvPrint {
+        background: white;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    #InvPrint h1,
+    #InvPrint h5,
+    #InvPrint p,
+    #InvPrint td{
+        color: black;
+    }
+
+    #InvPrint table > thead > tr > td {
+       text-align: initial;
+       padding: 0;
+       background: lightskyblue;
+    }
+
+    #InvPrint table > tbody > tr > td {
+        border-top: white 5px solid;
+        border-bottom: white 5px solid;
+    }
+
+    #InvPrint > section:nth-child(1) > div:nth-child(3) > div > h1{
+        color: lightskyblue;
+        font-size: xxx-large;
+    }
+
+}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if not user.is_authenticated %}
+        <section class="layout">
+            <div class="layout-box"> 
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>{{ form.as_table }}</table>
+                    <input type="submit" value="LOGIN">
+                </form>
+            </div>
+        </section>
+    {% else %}
+        <section class="layout">
+            <div class="layout-box center hero"> 
+                <h1>ONE>/p,</h1> 
+            </div>
+        </section>
+    {% endif %} 
+{% endblock content %}

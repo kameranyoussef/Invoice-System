@@ -1,0 +1,40 @@
+{% load static %}
+{% block content %}
+    <table>
+        <thead>
+            <td>EXPORT</td>
+            <td>INVOICES</td>
+            <td>CUSTOMER</td>
+            <td>COMPANY</td>
+        </thead>
+        {% for obj in object_list  %}
+            <tr>
+                <td>
+                    <a hx-get="{% url 'export' pk=obj.id %}" hx-target="#response-div">
+                        <img src="{% static 'imgs/arrow-16-white.png' %}"/>
+                        <img src="{% static 'imgs/arrow-16-black.png' %}"/>
+                    </a>
+                </td>
+                <td>
+                    <a hx-get="{% url 'update_invoice' pk=obj.id %}" hx-target="#response-div">
+                        ID:100-{{ obj.id }}, 
+                        Date: {{ obj.created_at|date:"Y-m-d" }}<br> 
+                        Payment: {{ obj.created_at|date:"Y-m-d" }}
+                </td>
+                <td>
+                    <a hx-get="{% url 'update_customer' pk=obj.customer.id %}" hx-target="#response-div">
+                        {{ obj.customer.name|title }}<br>
+                        {{ obj.customer.email }}, 
+                        +{{ obj.customer.tel }}<br></a>
+                </td>
+                <td>
+                    <a hx-get="{% url 'update_company' pk=obj.company.id %}" hx-target="#response-div">
+                        {{ obj.company.name|upper }}, 
+                        {{ obj.company.contact|title}}<br>
+                        {{ obj.company.email }}, 
+                        +{{ obj.company.tel }}<br></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

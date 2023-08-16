@@ -1,0 +1,29 @@
+{% load static %}
+<form hx-post="{{ request.path }}">
+
+    {% if form %}
+        <div class="createUpdate">
+            <table>{{ form.as_table }}</table>
+        </div>
+    {% endif %}
+
+
+    {% if formset %}
+        {{ formset.management_form }}
+        <div id="formset-list"></div>
+        <button type="button" id="Add_formset">
+            <img src="{% static 'imgs/plus-16-white.png' %}"/>
+        </button>
+    {% endif %}
+
+    <input type="submit" value="Save">
+</form>
+
+
+{% if formset %}
+    <div class="hidden-formset" id="myformset"> 
+        {{ formset.empty_form.as_div }}
+    </div>
+{% endif %}
+
+<script src="{% static 'js/custom.js' %}"></script>

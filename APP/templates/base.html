@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    {% include "inc/head.html" %}
+
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        {% include "inc/navbar.html" %}
+        <div id="response-div">
+            {% block content %}   
+                {% include "inc/home.html" %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>

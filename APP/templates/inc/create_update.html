@@ -1,0 +1,22 @@
+{% load static %}
+<form hx-post="{{ request.path }}">
+
+    {% if form %}
+        <div class="createUpdate">
+            <table>{{ form.as_table }}</table>
+        </div>
+    {% endif %}
+
+
+    {% if formset %}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="formset" id="myformset">   
+                {{ form.as_div }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <input type="submit" value="Save">
+
+</form>
